@@ -2,14 +2,15 @@
 Respitory for FaceGenEslify intended to help turning skyrim mods with face gen mesh and textures into eslified plugins
 
 Important Note: This only helps and fixes a specific bug. This will not fix anything other then the formIDs for face gen when eslified this will not fix dark face bug resulting from different resolution issues or any other type of bug.
-﻿Overview
+
+Overview
 
 When using xEdit to compact formIDs to flag as esl mods with face gen files will not be changed to the new formIDs. This is a problem because Skyrim's engine will not know what NPC needs what file because the facegen files were not renumbered and will result in the infamous dark face bug. Hense the purpose of this using xEdit's scripting function will out put all NPC's and there formIDs before and after compacting for the esl flag then reading those two files and changing names of the facegen files to that of the new formIDs of attached to the NPCs.
 
 While this is not a advanced tool it is important to know what to eslify and what not to eslify. Obscene911 made a great guide for eslifing here.
 A shortened version of it is do not eslify plugins with .seq files, scripts that call hard coded formIDs from that plugin you want to eslify (See bottom for extra information), and facegen files. This how ever will help fix the problem with facegen renumbering.
 
-﻿Installation
+Installation
 
 Make sure all dependencies are installed
 Drop my two folders into the root of SSEEdit folder ensuring "_1PreEslify.pas" and "_2PostEslify.pas" are inside the Edit Scripts folder for SSEEdit.
@@ -18,7 +19,7 @@ Now open "config.json" inside of FaceGenEslify folder and change "xEditFolder" h
 Next change "SkyrimDataFolder" header's to the Skyrim Special Edition's data folder.
     Example: "C:\\Steam\\steamapps\\common\\Skyrim Special Edition\\Data"
 
-﻿Usage
+Usage
 
 If using MO2 you need to run this and SSEEdit through MO2.
 
@@ -34,7 +35,7 @@ Now compact that plugin using xEdit's feature, right click on the plugin "Compac
 Now Right click on the plugin then apply script "_2PostEslify.pas". Once this script is done you can close xEdit.
 Now run "FaceGenEslify.exe", though MO2 if your using it, from this page and your done.
 
-﻿Extra Notes
+Extra Notes
 
 If your using MO2 you can trick my utility into thinking the mod folder that contains the facegen data you need changed is the data folder by making that folders path to the value of "SkyrimDataFolder" in the config file.
 
@@ -43,6 +44,6 @@ If you do not have the source code of a script from a mod you can use the "Papyr
 
 This may potentially work for Fallout 4 but I am not sure if its the same file pathing or system I do not know enough about Fallout 4 modding.
 
-﻿My other utilities
+My other utilities
 
-Skyrim New Game Plus esk Batch Builder
+Skyrim New Game Plus esk Batch Builder : https://www.nexusmods.com/skyrimspecialedition/mods/44325
