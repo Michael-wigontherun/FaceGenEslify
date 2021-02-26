@@ -97,9 +97,17 @@ namespace FaceGenEslIfify
             string eslFilePath = $"{config.SkyrimDataFolder}\\meshes\\actors\\character\\facegendata\\facegeom\\{pluginName}\\{eslFormID}.nif";
             if (File.Exists(orgFilePath))
             {
-                Console.WriteLine("\"" + orgFilePath + "\" found.");
-                File.Move(orgFilePath, eslFilePath,true);
-                Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
+                try
+                {
+                    Console.WriteLine("\"" + orgFilePath + "\" found.");
+                    File.Move(orgFilePath, eslFilePath, true);
+                    Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                }
             }
             else Console.WriteLine(orgFilePath+"\" not found.");
         }
@@ -115,9 +123,17 @@ namespace FaceGenEslIfify
             string eslFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.dds";
             if (File.Exists(orgFilePath))
             {
-                Console.WriteLine("\"" + orgFilePath + "\" found.");
-                File.Move(orgFilePath, eslFilePath, true);
-                Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
+                try
+                {
+                    Console.WriteLine("\"" + orgFilePath + "\" found.");
+                    File.Move(orgFilePath, eslFilePath, true);
+                    Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                }
             }
             else Console.WriteLine(orgFilePath + "\" not found.");
         }
