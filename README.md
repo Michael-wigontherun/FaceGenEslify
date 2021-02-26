@@ -23,17 +23,16 @@ Usage
 
 If using MO2 you need to run this and SSEEdit through MO2.
 
-First, Identify what mod you want to turn into an esl check to see if it has facegen data it will be located under "meshes\actors\character\FaceGenData\FaceGeom\{Whatever the plugin name is}\" as loose files or using the same path inside the BSA attached to the mod. If it does not have facegendata attached to the plugin then this is nonaplicable to the problem with eslifying a plugin. But if you didn't know that read to step 4 because it is a useful thing to know when eslifying plugins.
-Second, Identify if the mod ever has hard coded form calls in any of their scripts. If it does this plugin can not be eslify, or if you do not have source code and you do not know how to decompile Bethesda scripts skip the plugin aswell or See bottom for extra information.
-Load SSEEdit, though MO2 if your using it, Load all plugins.
-Right click on a plugin tree inside of xEdit and click apply script - "Find ESP plugins which could be turned into ESL.pas" and wait for it to finish and then scroll till you get to the plugin you wish to eslify and if it has any kind of warning DO NOT COMPACT AT ALL it is not a mod you can eslify.
-          
-The comment on "hf_Lakeiew_AvantGarden_EX.esp" means its potentially ok to eslify while "SBH_DovakinAbode.esp" is not because it adds new cells. there is another comment from the script that is "Can be turned into ESL by adding ESL flag in TES4 header" this means all you need to do is add the esl flag to the header file.
-This is just an example do not convert "hf_Lakeiew_AvantGarden_EX.esp" without examining it first. I did not look at it at all just trying to show what is ok and not ok using this script. 
-Now we can start using this utilities functions, first locate the applicable plugin you want to eslify in the load order inside of SSEEdit. Right click apply script "_1PreEslify.pas". Once done move on.
-Now compact that plugin using xEdit's feature, right click on the plugin "Compact FormIDs for ESL." Once done go to the plugins header double click on record flag and check ESL. Then save.
-Now Right click on the plugin then apply script "_2PostEslify.pas". Once this script is done you can close xEdit.
-Now run "FaceGenEslify.exe", though MO2 if your using it, from this page and your done.
+1. First, Identify what mod you want to turn into an esl check to see if it has facegen data it will be located under "meshes\actors\character\FaceGenData\FaceGeom\{Whatever the plugin name is}\" as loose files or using the same path inside the BSA attached to the mod. If it does not have facegendata attached to the plugin then this is nonaplicable to the problem with eslifying a plugin. But if you didn't know that read to step 4 because it is a useful thing to know when eslifying plugins.
+2. Second, Identify if the mod ever has hard coded form calls in any of their scripts. If it does this plugin can not be eslify, or if you do not have source code and you do not know how to decompile Bethesda scripts skip the plugin aswell or See bottom for extra information.
+3. Load SSEEdit, though MO2 if your using it, Load all plugins.
+4. Right click on a plugin tree inside of xEdit and click apply script - "Find ESP plugins which could be turned into ESL.pas" and wait for it to finish and then scroll till you get to the plugin you wish to eslify and if it has any kind of warning DO NOT COMPACT AT ALL it is not a mod you can eslify.
+This on "Can be turned into ESL by compacting FormIDs first, then adding ESL flag in TES4 header" means its potentially ok to eslify while "Warning: Plugin has new CELL(s) which won't work when turned into ESL and overridden by other mods due to the game bug" is not because it adds new cells. there is another comment from the script that is "Can be turned into ESL by adding ESL flag in TES4 header" this means all you need to do is add the esl flag to the header file.
+5. Now we can start using this utilities functions, first locate the applicable plugin you want to eslify in the load order inside of SSEEdit. Right click apply script "_1PreEslify.pas". Once done move on.
+6. Now compact that plugin using xEdit's feature, right click on the plugin "Compact FormIDs for ESL." Once done go to the plugins header double click on record flag and check ESL. Then save.
+7. Now Right click on the plugin then apply script "_2PostEslify.pas". Once this script is done you can close xEdit.
+8. Now run "FaceGenEslify.exe", though MO2 if your using it, from this page and your done.
+9. Now you will also need to go into the name changed nifs Example: "meshes\actors\character\facegendata\facegeom\diverse skyrim.esp\0000f61d.nif" where the "diverse skyrim.esp" is that is the folder that contains the face gen nifs change the name with what ever the plugin that contains the NPC. Now open up all the the nifs one at a time and in the Block details section look for a Name called "BSShaderTextureSet", its usually the first or second one of these, then open the drop down then open the textures drop down. find the texture that has a value similar to this "data\Textures\Actors\Character\FaceGenData\FaceTint\DIVERSE SKYRIM.esp\0000F620.dds", where "DIVERSE SKYRIM.esp" equals the plugin name, and the "0000F620" equals what ever this version is then change those 8 characters to whatever the new form ID that the .nif was renamed to.
 
 Extra Notes
 
