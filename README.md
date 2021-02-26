@@ -33,7 +33,7 @@ This on "Can be turned into ESL by compacting FormIDs first, then adding ESL fla
 7. Now Right click on the plugin then apply script "_2PostEslify.pas". Once this script is done you can close xEdit.
 8. Now run "FaceGenEslify.exe", though MO2 if your using it, from this page and your done.
 
-This next step is only if you set the header "RenameTint" to true and you wish to manually change all texture sets in each .nif face geometry.
+This next step is only if you set the header "RenameTint" to true and you wish to manually change all texture sets in each .nif face geometry. This is not a guarantied work around I only tested 2 mods Diverse Skyrim and Improved Roads.
 
 9. Now you will also need to go into the name changed nifs Example: "meshes\actors\character\facegendata\facegeom\diverse skyrim.esp\0000f61d.nif" where the "diverse skyrim.esp" is that is the folder that contains the face gen nifs change the name with what ever the plugin that contains the NPC. Now open up all the the nifs one at a time and in the Block details section look for a Name called "BSShaderTextureSet", its usually the first or second one of these, then open the drop down then open the textures drop down. find the texture that has a value similar to this "data\Textures\Actors\Character\FaceGenData\FaceTint\DIVERSE SKYRIM.esp\0000F620.dds", where "DIVERSE SKYRIM.esp" equals the plugin name, and the "0000F620" equals what ever this version is then change those 8 characters to whatever the new form ID that the .nif was renamed to.
 
