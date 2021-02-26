@@ -14,10 +14,10 @@ namespace FaceGenEslIfify
             config = SettingsJson.GetConfig();
             try
             {
-                if (File.Exists($"{config.xEditFolder}\\FaceGenEslIfify\\xEditOutput\\_1PreEslify.csv"))
+                if (File.Exists($"{config.xEditFolder}\\FaceGenEslify\\xEditOutput\\_1PreEslify.csv"))
                 {
                     Console.WriteLine($"_1PreEslify.csv found.");
-                    using (var reader = new StreamReader($"{config.xEditFolder}\\FaceGenEslIfify\\xEditOutput\\_1PreEslify.csv"))
+                    using (var reader = new StreamReader($"{config.xEditFolder}\\FaceGenEslify\\xEditOutput\\_1PreEslify.csv"))
                     {
                         reader.ReadLine();
                         while (!reader.EndOfStream)
@@ -28,24 +28,35 @@ namespace FaceGenEslIfify
                         }
                     }
 
-                    if (File.Exists($"{config.xEditFolder}\\FaceGenEslIfify\\xEditOutput\\_2PostEslify.csv"))
+                    if (File.Exists($"{config.xEditFolder}\\FaceGenEslify\\xEditOutput\\_2PostEslify.csv"))
                     {
                         Console.WriteLine("_2PostEslify.csv found.");
-                        using (var reader = new StreamReader($"{config.xEditFolder}\\FaceGenEslIfify\\xEditOutput\\_2PostEslify.csv"))
+                        using (var reader = new StreamReader($"{config.xEditFolder}\\FaceGenEslify\\xEditOutput\\_2PostEslify.csv"))
                         {
                             reader.ReadLine();
                             while (!reader.EndOfStream)
                             {
                                 string[] csvArr = reader.ReadLine().Split(';');
                                 NPCForm nPCForm = new NPCForm(csvArr[0], true, csvArr[2], csvArr[1]);
-                                FormList.GetValueOrDefault(nPCForm.PluginName + ";" + nPCForm.EDID)._FormIDPost = nPCForm.FormIDPost;
+                                FormList.GetValueOrDefault(nPCForm.PluginName + ";" + nPCForm.EDID).IsEsl = nPCForm.IsEsl;
+                                FormList.GetValueOrDefault(nPCForm.PluginName + ";" + nPCForm.EDID).SetFormIDPost(nPCForm.FormIDPost);
                             }
                         }
                         IDictionaryEnumerator myEnumerator = FormList.GetEnumerator();
-                        while (myEnumerator.MoveNext())
+                        if (config.RenameTint)
                         {
-                            SetMeshFaceGen((NPCForm)(myEnumerator.Value));
-                            SetTexFaceGen((NPCForm)(myEnumerator.Value));
+                            while (myEnumerator.MoveNext())
+                            {
+                                SetMeshFaceGen((NPCForm)(myEnumerator.Value));
+                                SetTexFaceGen((NPCForm)(myEnumerator.Value));
+                            }
+                        }
+                        else
+                        {
+                            while (myEnumerator.MoveNext())
+                            {
+                                SetMeshFaceGen((NPCForm)(myEnumerator.Value));
+                            }
                         }
                     }
                     else
@@ -68,9 +79,10 @@ namespace FaceGenEslIfify
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.ReadLine();
             }
             Console.WriteLine("FacegenEslify done.");
-            Console.Write("Press enter to close. >");
+            Console.WriteLine("Press enter to close. >");
             Console.ReadLine();
         }
 
@@ -86,9 +98,10 @@ namespace FaceGenEslIfify
             if (File.Exists(orgFilePath))
             {
                 Console.WriteLine("\"" + orgFilePath + "\" found.");
-                File.Move(orgFilePath, eslFilePath);
+                File.Move(orgFilePath, eslFilePath,true);
                 Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
             }
+            else Console.WriteLine(orgFilePath+"\" not found.");
         }
 
         public static void SetTexFaceGen(NPCForm nPCFormP)
@@ -103,9 +116,10 @@ namespace FaceGenEslIfify
             if (File.Exists(orgFilePath))
             {
                 Console.WriteLine("\"" + orgFilePath + "\" found.");
-                File.Move(orgFilePath, eslFilePath);
+                File.Move(orgFilePath, eslFilePath, true);
                 Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
             }
+            else Console.WriteLine(orgFilePath + "\" not found.");
         }
     }
 }

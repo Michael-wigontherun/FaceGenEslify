@@ -6,7 +6,7 @@ namespace FaceGenEslIfify
 {
     public class NPCForm
     {
-        private string _PluginName;
+        public string _PluginName;
         public string PluginName
         {
             get { return _PluginName; }
@@ -29,7 +29,7 @@ namespace FaceGenEslIfify
 
         public string EDID { get; set; }
 
-        private bool IsEsl = false;
+        public bool IsEsl = false;
 
         public NPCForm() { }
 

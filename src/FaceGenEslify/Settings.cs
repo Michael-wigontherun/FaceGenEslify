@@ -21,5 +21,7 @@ namespace FaceGenEslIfify
         public string SkyrimDataFolder = @".";
         [JsonInclude]
         public string xEditFolder = @".";
+        [JsonInclude]
+        public bool RenameTint = false;
     }
 }
