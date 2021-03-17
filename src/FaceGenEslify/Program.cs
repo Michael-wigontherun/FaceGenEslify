@@ -43,19 +43,40 @@ namespace FaceGenEslIfify
                             }
                         }
                         IDictionaryEnumerator myEnumerator = FormList.GetEnumerator();
-                        if (config.RenameTint)
+                        if (config.RemoveNotCopy)
                         {
-                            while (myEnumerator.MoveNext())
+                            if (config.RenameTint)
                             {
-                                SetMeshFaceGen((NPCForm)(myEnumerator.Value));
-                                SetTexFaceGen((NPCForm)(myEnumerator.Value));
+                                while (myEnumerator.MoveNext())
+                                {
+                                    SetMeshFaceGen((NPCForm)(myEnumerator.Value));
+                                    SetTexFaceGen((NPCForm)(myEnumerator.Value));
+                                }
+                            }
+                            else
+                            {
+                                while (myEnumerator.MoveNext())
+                                {
+                                    SetMeshFaceGen((NPCForm)(myEnumerator.Value));
+                                }
                             }
                         }
                         else
                         {
-                            while (myEnumerator.MoveNext())
+                            if (config.RenameTint)
                             {
-                                SetMeshFaceGen((NPCForm)(myEnumerator.Value));
+                                while (myEnumerator.MoveNext())
+                                {
+                                    CopyMeshFaceGen((NPCForm)(myEnumerator.Value));
+                                    CopyTexFaceGen((NPCForm)(myEnumerator.Value));
+                                }
+                            }
+                            else
+                            {
+                                while (myEnumerator.MoveNext())
+                                {
+                                    CopyMeshFaceGen((NPCForm)(myEnumerator.Value));
+                                }
                             }
                         }
                     }
@@ -137,5 +158,58 @@ namespace FaceGenEslIfify
             }
             else Console.WriteLine(orgFilePath + "\" not found.");
         }
+        //-----------------------------------
+        public static void CopyMeshFaceGen(NPCForm nPCFormP)
+        {
+            CopyMeshFaceGen(nPCFormP.PluginName, nPCFormP.FormIDPre, nPCFormP.FormIDPost);
+        }
+
+        public static void CopyMeshFaceGen(string pluginName, string origonalFormID, string eslFormID)
+        {
+            string orgFilePath = $"{config.SkyrimDataFolder}\\meshes\\actors\\character\\facegendata\\facegeom\\{pluginName}\\{origonalFormID}.nif";
+            string eslFilePath = $"{config.SkyrimDataFolder}\\meshes\\actors\\character\\facegendata\\facegeom\\{pluginName}\\{eslFormID}.nif";
+            if (File.Exists(orgFilePath))
+            {
+                try
+                {
+                    Console.WriteLine("\"" + orgFilePath + "\" found.");
+                    File.Copy(orgFilePath, eslFilePath, true);
+                    Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                }
+            }
+            else Console.WriteLine(orgFilePath + "\" not found.");
+        }
+
+        public static void CopyTexFaceGen(NPCForm nPCFormP)
+        {
+            CopyTexFaceGen(nPCFormP.PluginName, nPCFormP.FormIDPre, nPCFormP.FormIDPost);
+        }
+
+        public static void CopyTexFaceGen(string pluginName, string origonalFormID, string eslFormID)
+        {
+            string orgFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.dds";
+            string eslFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.dds";
+            if (File.Exists(orgFilePath))
+            {
+                try
+                {
+                    Console.WriteLine("\"" + orgFilePath + "\" found.");
+                    File.Copy(orgFilePath, eslFilePath, true);
+                    Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                }
+            }
+            else Console.WriteLine(orgFilePath + "\" not found.");
+        }
+
     }
 }

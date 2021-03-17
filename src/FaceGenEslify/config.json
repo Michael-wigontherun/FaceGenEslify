@@ -1,5 +1,6 @@
 {
   "SkyrimDataFolder": "C:\\Steam\\steamapps\\common\\Skyrim Special Edition\\Data",
   "xEditFolder": "C:\\Modding\\SkyrimSE\\sseedit",
-  "RenameTint": false
+  "RenameTint": false,
+  "RemoveNotCopy":  false
 }
