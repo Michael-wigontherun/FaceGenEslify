@@ -45,38 +45,18 @@ namespace FaceGenEslIfify
                         IDictionaryEnumerator myEnumerator = FormList.GetEnumerator();
                         if (config.RemoveNotCopy)
                         {
-                            if (config.RenameTint)
+                            while (myEnumerator.MoveNext())
                             {
-                                while (myEnumerator.MoveNext())
-                                {
-                                    SetMeshFaceGen((NPCForm)(myEnumerator.Value));
-                                    SetTexFaceGen((NPCForm)(myEnumerator.Value));
-                                }
-                            }
-                            else
-                            {
-                                while (myEnumerator.MoveNext())
-                                {
-                                    SetMeshFaceGen((NPCForm)(myEnumerator.Value));
-                                }
+                                SetMeshFaceGen((NPCForm)(myEnumerator.Value));
+                                SetTexFaceGen((NPCForm)(myEnumerator.Value));
                             }
                         }
                         else
                         {
-                            if (config.RenameTint)
+                            while (myEnumerator.MoveNext())
                             {
-                                while (myEnumerator.MoveNext())
-                                {
-                                    CopyMeshFaceGen((NPCForm)(myEnumerator.Value));
-                                    CopyTexFaceGen((NPCForm)(myEnumerator.Value));
-                                }
-                            }
-                            else
-                            {
-                                while (myEnumerator.MoveNext())
-                                {
-                                    CopyMeshFaceGen((NPCForm)(myEnumerator.Value));
-                                }
+                                CopyMeshFaceGen((NPCForm)(myEnumerator.Value));
+                                CopyTexFaceGen((NPCForm)(myEnumerator.Value));
                             }
                         }
                     }

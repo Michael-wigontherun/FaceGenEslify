@@ -12,6 +12,9 @@ A shortened version of it is do not eslify plugins with .seq files, scripts that
 
 Installation
 
+Updating from 1.2 to 1.3
+you do not need to replace the config.json just take out the "RenameTint": true, line from your config
+
 Make sure all dependencies are installed
 Drop my two folders into the root of SSEEdit folder ensuring "_1PreEslify.pas" and "_2PostEslify.pas" are inside the Edit Scripts folder for SSEEdit.
 Now open "config.json" inside of FaceGenEslify folder and change "xEditFolder" header's value to where ever your SSEEdit is.

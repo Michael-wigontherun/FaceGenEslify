@@ -22,8 +22,6 @@ namespace FaceGenEslIfify
         [JsonInclude]
         public string xEditFolder = @".";
         [JsonInclude]
-        public bool RenameTint = false;
-        [JsonInclude]
         public bool RemoveNotCopy = false;
     }
 }
