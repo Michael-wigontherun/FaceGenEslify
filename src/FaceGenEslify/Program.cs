@@ -122,6 +122,8 @@ namespace FaceGenEslIfify
         {
             string orgFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.dds";
             string eslFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.dds";
+            string orgTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.tgs";
+            string eslTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.tgs";
             if (File.Exists(orgFilePath))
             {
                 try
@@ -129,6 +131,10 @@ namespace FaceGenEslIfify
                     Console.WriteLine("\"" + orgFilePath + "\" found.");
                     File.Move(orgFilePath, eslFilePath, true);
                     Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
+
+                    Console.WriteLine("\"" + orgTgaFilePath + "\" found.");
+                    File.Move(orgTgaFilePath, eslTgaFilePath, true);
+                    Console.WriteLine("\"" + eslTgaFilePath + "\" replaced origonal.");
                 }
                 catch (Exception ex)
                 {
@@ -174,6 +180,8 @@ namespace FaceGenEslIfify
         {
             string orgFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.dds";
             string eslFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.dds";
+            string orgTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.tgs";
+            string eslTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.tgs";
             if (File.Exists(orgFilePath))
             {
                 try
@@ -181,6 +189,10 @@ namespace FaceGenEslIfify
                     Console.WriteLine("\"" + orgFilePath + "\" found.");
                     File.Copy(orgFilePath, eslFilePath, true);
                     Console.WriteLine("\"" + eslFilePath + "\" replaced origonal.");
+
+                    Console.WriteLine("\"" + orgTgaFilePath + "\" found.");
+                    File.Copy(orgTgaFilePath, eslTgaFilePath, true);
+                    Console.WriteLine("\"" + eslTgaFilePath + "\" replaced origonal.");
                 }
                 catch (Exception ex)
                 {
