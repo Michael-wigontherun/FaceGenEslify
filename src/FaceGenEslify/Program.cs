@@ -122,8 +122,8 @@ namespace FaceGenEslIfify
         {
             string orgFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.dds";
             string eslFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.dds";
-            string orgTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.tgs";
-            string eslTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.tgs";
+            string orgTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.tga";
+            string eslTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.tga";
             if (File.Exists(orgFilePath))
             {
                 try
@@ -180,8 +180,8 @@ namespace FaceGenEslIfify
         {
             string orgFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.dds";
             string eslFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.dds";
-            string orgTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.tgs";
-            string eslTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.tgs";
+            string orgTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.tga";
+            string eslTgaFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.tga";
             if (File.Exists(orgFilePath))
             {
                 try
