@@ -50,6 +50,13 @@ begin
   
 end;
 
+//send a record and it will remove any formID stuff
+//sending the record ArmorHideBoots "Hide Boots" [ARMO:00013910] and the return will be 'ArmorHideBoots "Hide Boots"' will return true
+function EditValueWithoutFormID(editValue : string) : string;
+begin
+  Result:= Copy(editValue, 1, pos('[', editValue) - 2);
+end;
+
 //will return the armor type 
 //sending the record ArmorHideBoots "Hide Boots" [ARMO:00013910] will return 'Light Armor'
 function ArmorType(e: IInterface) : string;
