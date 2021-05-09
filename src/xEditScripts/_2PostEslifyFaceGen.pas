@@ -1,15 +1,15 @@
-unit _1PreEslify;
+unit _2PostEslifyFaceGen;
 
 interface
   implementation
   uses xEditAPI, _wotrFunctions, Classes, SysUtils, StrUtils, Windows;
 
-var slPreEslify : TStringList;
+var slPostEslify : TStringList;
 
 function Initialize: integer;
 begin
-  slPreEslify := TStringList.Create;
-  slPreEslify.Add('EspName;FormID;EDID;');
+  slPostEslify := TStringList.Create;
+  slPostEslify.Add('EspName;FormID;EDID;');
 end;
 
 function Process(e: IInterface): integer;
@@ -17,7 +17,7 @@ begin
   if Signature(e) = 'NPC_' then 
   begin
     if IsMaster(e) = false then Exit;
-    slPreEslify.Add(Format('%s;%s;%s;', [
+    slPostEslify.Add(Format('%s;%s;%s;', [
       Name(GetFile(e)),
       GetStringFormID(e),
       GetElementEditValues(e, 'EDID - Editor ID')
@@ -32,12 +32,12 @@ begin
   folderDirectory.add('FaceGenEslify');
   folderDirectory.add('FaceGenEslify\xEditOutput');
   createOutputFolder(folderDirectory);
-  if  Assigned(slPreEslify) then 
+  if  Assigned(slPostEslify) then 
   begin
-    if  (slPreEslify.Count > 1) then begin
-      slPreEslify.SaveToFile(ProgramPath+'FaceGenEslify\xEditOutput\_1PreEslify.csv');
+    if  (slPostEslify.Count > 1) then begin
+      slPostEslify.SaveToFile(ProgramPath+'FaceGenEslify\xEditOutput\_2PostEslify.csv');
     end;
-    slPreEslify.Free;
+    slPostEslify.Free;
   end;
  end;
 
