@@ -49,6 +49,7 @@ namespace FaceGenEslIfify
                             {
                                 SetMeshFaceGen((NPCForm)(myEnumerator.Value));
                                 SetTexFaceGen((NPCForm)(myEnumerator.Value));
+                                Console.WriteLine(((NPCForm)(myEnumerator.Value)).EDID);
                             }
                         }
                         else
@@ -57,6 +58,7 @@ namespace FaceGenEslIfify
                             {
                                 CopyMeshFaceGen((NPCForm)(myEnumerator.Value));
                                 CopyTexFaceGen((NPCForm)(myEnumerator.Value));
+                                Console.WriteLine(((NPCForm)(myEnumerator.Value)).EDID);
                             }
                         }
                     }
@@ -96,7 +98,7 @@ namespace FaceGenEslIfify
         {
             string orgFilePath = $"{config.SkyrimDataFolder}\\meshes\\actors\\character\\facegendata\\facegeom\\{pluginName}\\{origonalFormID}.nif";
             string eslFilePath = $"{config.SkyrimDataFolder}\\meshes\\actors\\character\\facegendata\\facegeom\\{pluginName}\\{eslFormID}.nif";
-            if (File.Exists(orgFilePath))
+            if (File.Exists(orgFilePath) && !File.Exists(eslFilePath))
             {
                 try
                 {
@@ -110,7 +112,7 @@ namespace FaceGenEslIfify
                     Console.ReadLine();
                 }
             }
-            else Console.WriteLine(orgFilePath+"\" not found.");
+            else Console.WriteLine(orgFilePath+ "\" not found or esled file already exists");
         }
 
         public static void SetTexFaceGen(NPCForm nPCFormP)
@@ -122,7 +124,7 @@ namespace FaceGenEslIfify
         {
             string orgFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.dds";
             string eslFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.dds";
-            if (File.Exists(orgFilePath))
+            if (File.Exists(orgFilePath) && !File.Exists(eslFilePath))
             {
                 try
                 {
@@ -136,7 +138,7 @@ namespace FaceGenEslIfify
                     Console.ReadLine();
                 }
             }
-            else Console.WriteLine(orgFilePath + "\" not found.");
+            else Console.WriteLine(orgFilePath + "\" not found or esled file already exists");
         }
         //-----------------------------------
         public static void CopyMeshFaceGen(NPCForm nPCFormP)
@@ -148,7 +150,7 @@ namespace FaceGenEslIfify
         {
             string orgFilePath = $"{config.SkyrimDataFolder}\\meshes\\actors\\character\\facegendata\\facegeom\\{pluginName}\\{origonalFormID}.nif";
             string eslFilePath = $"{config.SkyrimDataFolder}\\meshes\\actors\\character\\facegendata\\facegeom\\{pluginName}\\{eslFormID}.nif";
-            if (File.Exists(orgFilePath))
+            if (File.Exists(orgFilePath) && !File.Exists(eslFilePath))
             {
                 try
                 {
@@ -162,7 +164,7 @@ namespace FaceGenEslIfify
                     Console.ReadLine();
                 }
             }
-            else Console.WriteLine(orgFilePath + "\" not found.");
+            else Console.WriteLine(orgFilePath + "\" not found or esled file already exists");
         }
 
         public static void CopyTexFaceGen(NPCForm nPCFormP)
@@ -174,7 +176,7 @@ namespace FaceGenEslIfify
         {
             string orgFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{origonalFormID}.dds";
             string eslFilePath = $"{config.SkyrimDataFolder}\\textures\\actors\\character\\facegendata\\facetint\\{pluginName}\\{eslFormID}.dds";
-            if (File.Exists(orgFilePath))
+            if (File.Exists(orgFilePath) && !File.Exists(eslFilePath))
             {
                 try
                 {
@@ -188,7 +190,7 @@ namespace FaceGenEslIfify
                     Console.ReadLine();
                 }
             }
-            else Console.WriteLine(orgFilePath + "\" not found.");
+            else Console.WriteLine(orgFilePath + "\" not found or esled file already exists");
         }
 
     }
